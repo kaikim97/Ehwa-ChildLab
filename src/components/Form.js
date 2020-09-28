@@ -16,12 +16,15 @@ class Form extends Component {
         gender : '',
         name : '',
         dateOfBirth : '',
+        primaryLanguage : '',
         education : '', 
         history: '',
         majorMuscle: '',
         minorMuscle: '',
         surgery: '',
-        medication: ''
+        medication: '',
+        problem: '',
+        eatingProblem: ''
     }
 
     onStart = (e) => {
@@ -29,22 +32,26 @@ class Form extends Component {
         this.nextStep()
     }
 
+
+
     onChange = (e) => this.setState({[e.target.id]: e.target.value})
 
     onContinue = (e) => {
         e.preventDefault();
         this.props.newAnswer(this.state.gender, this.state.name, 
-            this.state.dateOfBirth, this.state.education, this.state.history,
-            this.state.majorMuscle, this.state.minorMuscle,
-            this.state.surgery, this.state.medication)
+            this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, 
+            this.state.history,this.state.majorMuscle, this.state.minorMuscle,
+            this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
+            this.state.toiletProblem, this.state.sleepProblem)
         this.nextStep()
     }
     onBack = (e) => {
         e.preventDefault();
         this.props.newAnswer(this.state.gender, this.state.name, 
-            this.state.dateOfBirth, this.state.education, this.state.history,
+            this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, this.state.history,
             this.state.majorMuscle, this.state.minorMuscle,
-            this.state.surgery, this.state.medication)
+            this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
+            this.state.toiletProblem, this.state.sleepProblem)
         this.prevStep()
     }
 
@@ -68,30 +75,36 @@ class Form extends Component {
         switch(step) {
             case 0:
                 return(
-                    <button onClick={this.onStart} style={{margin:'150px'}}>Start</button>
+                    <div className="container" style={myStyle}>
+                        <div style={{flex:'6', padding:'40px'}}>
+                            <button onClick={this.onStart} style={startButton}>Start</button>
+                        </div>
+                        <div style={{flex:'6'}}></div>
+                    </div>
+                   
                 )
                 
             case 1:
                 return(
-                    <div className="container" style={{margin:'70px', display:"flex"}}>
+                    <div className="container" style={myStyle}>
                         <div  style={{flex:'2'}}>
-                            <Sidebar />
+                            <Sidebar step={this.state.step}/>
                         </div>
                         <div style={{flex:8}}>
-                        <Personal 
-                            personal={this.state} 
-                            onChange={this.onChange} 
-                            onContinue={this.onContinue}
-                        />
+                            <Personal 
+                                personal={this.state} 
+                                onChange={this.onChange} 
+                                onContinue={this.onContinue}
+                            />
                         </div>
                     </div>
                     
                 )
             case 2: 
                 return(
-                    <div className="container" style={{margin:'70px', display:"flex"}}>
+                    <div className="container" style={myStyle}>
                         <div style={{flex:'2'}}>
-                            <Sidebar />
+                            <Sidebar step={this.state.step}/>
                         </div>
                         <div style={{flex:8}}>
                             <Education 
@@ -108,34 +121,75 @@ class Form extends Component {
                 )
             case 3: 
                 return(
-                    <div className="container" style={{margin:'70px'}}>
-                        <Development 
-                            personal={this.state} 
-                            onChange={this.onChange} 
-                            onContinue={this.onContinue}
-                            onBack={this.onBack}
-                        />
+                    <div className="container" style={myStyle}>
+                        <div style={{flex:2}}>
+                            <Sidebar step={this.state.step}/>
+                        </div>
+                        <div style={{flex:8}}>
+                            <Development 
+                                personal={this.state} 
+                                onChange={this.onChange} 
+                                onContinue={this.onContinue}
+                                onBack={this.onBack}
+                                
+                            />
+                        </div>
+                        
                     </div>
                 )
             case 4:
                 return(
-                    <div className="container" style={{margin:'70px'}}>
-                        <Illness 
-                            personal={this.state} 
-                            onChange={this.onChange} 
-                            onContinue={this.onContinue}
-                            onBack={this.onBack}
-                        />
+                    <div className="container" style={myStyle}>
+                        <div style={{flex:2}}>
+                            <Sidebar step={this.state.step}/>
+                        </div>
+                        <div style={{flex:8}}>
+                            <Illness 
+                                personal={this.state} 
+                                onChange={this.onChange} 
+                                onContinue={this.onContinue}
+                                onBack={this.onBack}
+                            />
+                        </div>  
                     </div>
                 )
+            case 5:
+                return(
+                    <div className="container" style={myStyle}>
+                        <div style={{flex:2}}>
+                            <Sidebar step={this.state.step}/>
+                        </div>
+                        <div style={{flex:'8', padding:'40px'}}>
+                            <p style={{margin:'50px'}}>제출하시겠습니까?</p>
+                            <button onClick={this.onStart} style={startButton}>Submit</button>
+                        </div>
+                    </div>
+                   
+                )
             default: 
-                    return
+                return(
+                    <div>
+                        <p style={{padding:'50px'}}>제출되었습니다. 평가 결과를 기다려주세요.</p>
+                    </div>
+                    
+                )
         }
 
     }
 }
 
+const myStyle = {
+    margin:'70px',
+    display:"flex",
+}
 
+const startButton = {
+    color: "white",
+    backgroundColor: "#6C2DC7",
+    border: "none",
+    fontSize: "16px",
+    padding: "15px 30px"
+}
 Form.propTypes = {
     form: PropTypes.array.isRequired
 }

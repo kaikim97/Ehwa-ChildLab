@@ -15,6 +15,8 @@ class Personal extends Component {
     render() {
         return (
             <div  className ="container" >
+                <p style={{display:"inline"}}>아동성별:</p>
+                {' '}
                 <input
                     type="radio" 
                     value ="Male" 
@@ -22,7 +24,8 @@ class Personal extends Component {
                     id = "gender" 
                     onChange = {this.props.onChange}
                     checked = {this.props.personal.gender === "Male"}
-                /> Male
+                /> 남자
+                {' '}
                 <input  
                     type="radio" 
                     value ="Female" 
@@ -30,14 +33,14 @@ class Personal extends Component {
                     id = "gender" 
                     onChange = {this.props.onChange}
                     checked = {this.props.personal.gender === "Female"}
-                /> Female
+                /> 여자
                 <br />
 
                 <MuiThemeProvider>
                     <React.Fragment>
                         <TextField
-                            hintText = "Enter Your Child's Name"
-                            floatingLabelText = "Name"
+                            hintText = "Child's Name"
+                            floatingLabelText = "아동 이름"
                             onChange = {this.props.onChange}
                             id = 'name'
                             value = {this.props.personal.name}
@@ -45,16 +48,34 @@ class Personal extends Component {
                         <br />
                         <TextField
                             hintText = "Child's Date of Birth"
-                            floatingLabelText = "Date of Birth"
+                            floatingLabelText = "아동 생년월일"
                             onChange = {this.props.onChange}
                             id = 'dateOfBirth'
                             value = {this.props.personal.dateOfBirth}
                         />
-
+                         <br />
+                        <TextField
+                            hintText = "Primary Language"
+                            floatingLabelText = "아동이 사용하는 언어"
+                            onChange = {this.props.onChange}
+                            id = 'primaryLanguage'
+                            value = {this.props.personal.primaryLanguage}
+                        />
+                        <br />
+                        <br />
+                        
+                        <textarea 
+                            type="text"
+                            style={{margin:'20px', width:"300px", height:'100px', resize:'none', fontSize: '14px'}}
+                            placeholder = "아동의 언어 문제 기술"
+                            id= 'problem'
+                            value = {this.props.personal.problem}
+                            onChange = {this.props.onChange}
+                        />
                         <br />
                         <br />
                         <button 
-                            style = {{margin:15}}
+                            style = {btnStyle}
                             onClick = {this.props.onContinue}
                         >Continue </button>
 
@@ -66,6 +87,16 @@ class Personal extends Component {
             
        )
     }
+}
+
+const btnStyle = {
+    margin:'20px',
+    color: "#6C2DC7",
+    backgroundColor: "white",
+    border: "2px solid",
+    borderColor: "#6C2DC7",
+    fontSize: "13px",
+    padding: "8px 13px"
 }
 
 
