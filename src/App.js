@@ -21,18 +21,28 @@ class App extends Component {
           problem: '',
           eatingProblem:'',
           toiletProblem:'',
-          sleepProblem: ''
+          sleepProblem: '',
+          broSis: '',
+          impaired: '',
+          impairment: '',
+          schoolLanguage: '',
+          reason: '',
+          improvement: '',
+          awareness:  ''
 
       }
     ]
   }
   newAnswer = (gender, name, dateOfBirth, primaryLanguage, education, history, 
     majorMuscle, minorMuscle, surgery, medication, problem, eatingProblem,
-    toiletProblem, sleepProblem) => {
+    toiletProblem, sleepProblem, broSis, impaired, impairment,
+    schoolLanguage, reason, improvement,awareness) => {
     this.setState({info: [{gender:gender , name: name, dateOfBirth: dateOfBirth, 
       primaryLanguage:primaryLanguage, education:education, history:history, majorMuscle:majorMuscle, 
       minorMuscle:minorMuscle, surgery:surgery, medication:medication, problem:problem,
-      eatingProblem:eatingProblem, toiletProblem:toiletProblem, sleepProblem:sleepProblem
+      eatingProblem:eatingProblem, toiletProblem:toiletProblem, sleepProblem:sleepProblem,
+      broSis:broSis, impaired:impaired, impairment:impairment, schoolLanguage:schoolLanguage,
+      reason:reason, improvement:improvement, awareness:awareness
 
     }]})
   }

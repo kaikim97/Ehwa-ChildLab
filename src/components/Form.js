@@ -24,7 +24,10 @@ class Form extends Component {
         surgery: '',
         medication: '',
         problem: '',
-        eatingProblem: ''
+        eatingProblem: '',
+        broSis:'', 
+        impaired: '',
+        impairment: ''
     }
 
     onStart = (e) => {
@@ -42,7 +45,10 @@ class Form extends Component {
             this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, 
             this.state.history,this.state.majorMuscle, this.state.minorMuscle,
             this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
-            this.state.toiletProblem, this.state.sleepProblem)
+            this.state.toiletProblem, this.state.sleepProblem,
+            this.state.broSis, this.state.impaired, this.state.impairment,
+            this.state.schoolLanguage, this.state.reason, this.state.improvement,
+            this.state.awareness)
         this.nextStep()
     }
     onBack = (e) => {
@@ -51,7 +57,10 @@ class Form extends Component {
             this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, this.state.history,
             this.state.majorMuscle, this.state.minorMuscle,
             this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
-            this.state.toiletProblem, this.state.sleepProblem)
+            this.state.toiletProblem, this.state.sleepProblem,
+            this.state.broSis, this.state.impaired, this.state.impairment,
+            this.state.schoolLanguage, this.state.reason, this.state.improvement,
+            this.state.awareness)
         this.prevStep()
     }
 
