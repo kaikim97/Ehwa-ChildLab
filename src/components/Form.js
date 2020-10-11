@@ -4,6 +4,7 @@ import Personal from  './questions/Personal'
 import Education from  './questions/Education'
 import Development from './questions/Development'
 import Illness from './questions/Illness'
+import Family from './questions/Family'
 import Sidebar from './Sidebar'
 
 
@@ -19,15 +20,31 @@ class Form extends Component {
         primaryLanguage : '',
         education : '', 
         history: '',
-        majorMuscle: '',
-        minorMuscle: '',
-        surgery: '',
-        medication: '',
         problem: '',
-        eatingProblem: '',
         broSis:'', 
         impaired: '',
-        impairment: ''
+        impairment: '', 
+        institute: '',
+        treatment: '',
+        teacherFeedback: '',
+        teacherFeedback1: '',
+        walkingAge: '',
+        speakingAge: '',
+        speakingAgeSentence: '',
+        developmentProblem: '',
+        developmentProblem1: '',
+        muscleProblem: '',
+        muscleProblem1: '',
+        illnessAtBirth: '',
+        illnessAtBirth1: '',
+        illness: '',
+        illness1: '',
+        surgery: '',
+        surgery1: '',
+        medication: '',
+        medication1: '',
+        familyHistory: '' 
+
     }
 
     onStart = (e) => {
@@ -43,24 +60,36 @@ class Form extends Component {
         e.preventDefault();
         this.props.newAnswer(this.state.gender, this.state.name, 
             this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, 
-            this.state.history,this.state.majorMuscle, this.state.minorMuscle,
-            this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
-            this.state.toiletProblem, this.state.sleepProblem,
+            this.state.history,this.state.problem, 
             this.state.broSis, this.state.impaired, this.state.impairment,
             this.state.schoolLanguage, this.state.reason, this.state.improvement,
-            this.state.awareness)
+            this.state.awareness, this.state.institute, this.state.treatment,
+            this.state.teacherFeedback, this.state.teacherFeedback1,
+            this.state.walkingAge, this.state.speakingAge, this.state.speakingAgeSentence,
+            this.state.developmentProblem, this.state.developmentProblem1,
+            this.state.muscleProblem, this.state.muscleProblem1,
+            this.state.illnessAtBirth, this.state.illnessAtBirth1,
+            this.state.illness, this.state.illness1, this.state.surgery, this.state.surgery1,
+            this.state.medication,this.state.medication1, this.state.familyHistory)
+
         this.nextStep()
     }
     onBack = (e) => {
         e.preventDefault();
         this.props.newAnswer(this.state.gender, this.state.name, 
             this.state.dateOfBirth, this.state.primaryLanguage, this.state.education, this.state.history,
-            this.state.majorMuscle, this.state.minorMuscle,
-            this.state.surgery, this.state.medication, this.state.problem, this.state.eatingProblem,
-            this.state.toiletProblem, this.state.sleepProblem,
+            this.state.problem, 
             this.state.broSis, this.state.impaired, this.state.impairment,
             this.state.schoolLanguage, this.state.reason, this.state.improvement,
-            this.state.awareness)
+            this.state.awareness, this.state.institute, this.treatment,
+            this.teacherFeedback, this.teacherFeedback1,
+            this.state.walkingAge, this.state.speakingAge, this.state.speakingAgeSentence,
+            this.state.developmentProblem, this.state.developmentProblem1,
+            this.state.muscleProblem, this.state.muscleProblem1,
+            this.state.illnessAtBirth, this.state.illnessAtBirth1,
+            this.state.illness, this.state.illness1, this.state.surgery, this.state.surgery1,
+            this.state.medication,this.state.medication1, this.state.familyHistory)
+
         this.prevStep()
     }
 
@@ -163,6 +192,19 @@ class Form extends Component {
                     </div>
                 )
             case 5:
+                return(
+                    
+                        <div>
+                            <Family 
+                                personal={this.state}
+                                onChange={this.onChange} 
+                                onContinue={this.onContinue}
+                                onBack={this.onBack}
+                            />
+                        </div>
+                        
+                )
+            case 6:
                 return(
                     <div className="container" style={myStyle}>
                         <div style={{flex:2}}>
